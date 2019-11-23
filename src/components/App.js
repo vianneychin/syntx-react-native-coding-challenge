@@ -1,20 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
+import AppNavigator from '../navigation'
 
-export const HomeScreen = () => {
-  return (
-    <View>
-      <Text>Hello world.</Text>
-    </View>
-  )
+export const App = () => {
+  return <AppNavigator />
 }
-
-const App = createStackNavigator({
-  Home: {
-    screen: HomeScreen
-  }
-})
-
-export default createAppContainer(App)
