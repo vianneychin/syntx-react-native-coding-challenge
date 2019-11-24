@@ -1,5 +1,7 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import dayjs from 'dayjs'
+import { SafeAreaView, Text } from 'react-native'
+import { icons } from './icons'
 import {
   CityForecastContainer,
   DayContainer,
@@ -8,7 +10,7 @@ import {
   Temperature,
   Day,
   Icon
-} from '../../styles'
+} from '../../../styles'
 
 export const CityForecast = ({ navigation }) => {
   const getParams = param => {
@@ -17,6 +19,15 @@ export const CityForecast = ({ navigation }) => {
   const data = getParams('data')
 
   console.log(data)
+
+  const renderIcon = (data, index) => {
+    if (data.daily) {
+      const icon = icons[data.daily.data[index].icon]
+      return <Icon width='50px' source={icon} />
+    } else {
+      return <Text>Loading...</Text>
+    }
+  }
 
   const renderCurrentDay = (data, index) => {
     if (data.daily) {
@@ -34,6 +45,10 @@ export const CityForecast = ({ navigation }) => {
     }
   }
 
+  const formatToDay = num => {
+    return dayjs.unix(num).format('dddd')
+  }
+
   const renderDaysOfWeek = () => {
     const daysOfWeek = [
       { id: 0 },
@@ -49,15 +64,17 @@ export const CityForecast = ({ navigation }) => {
         <DayContainer key={day.id}>
           <ForecastColumn>
             {/* data.daily.data[0].time */}
-            <Day>{renderCurrentDay(data, day.id)}</Day>
+            <Day adjustsFontSizeToFit numberOfLines={1}>
+              {formatToDay(renderCurrentDay(data, day.id))}
+            </Day>
           </ForecastColumn>
           <ForecastColumn>
-            <ForecastRow>
-              <Icon source={require('../../assets/icons/fog.png')} />
-            </ForecastRow>
+            <ForecastRow>{renderIcon(data, day.id)}</ForecastRow>
             <ForecastRow alignLeft>
               {/* data.daily.data[0].temperatureMax */}
-              <Temperature>{renderDailyTemp(data, day.id)}</Temperature>
+              <Temperature smaller adjustsFontSizeToFit numberOfLines={1}>
+                {renderDailyTemp(data, day.id)}°
+              </Temperature>
             </ForecastRow>
           </ForecastColumn>
         </DayContainer>
@@ -65,10 +82,13 @@ export const CityForecast = ({ navigation }) => {
     })
   }
 
-  // const renderData = (data, defaultValue) =>
-  //   JSON.stringify(navigation.getParam(data, defaultValue))
-  return <CityForecastContainer>{renderDaysOfWeek()}</CityForecastContainer>
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <CityForecastContainer>{renderDaysOfWeek()}</CityForecastContainer>
+    </SafeAreaView>
+  )
 }
 
-// Loop through the next 7 days including today,
-// render that stuff
+CityForecast.navigationOptions = {
+  title: '7 Day Forecast'
+}

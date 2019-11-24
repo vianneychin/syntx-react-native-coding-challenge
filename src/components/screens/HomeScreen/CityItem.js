@@ -11,7 +11,7 @@ import {
 } from '../../../styles'
 import { icons } from './icons'
 
-const CityItem = ({ lat, lng, navigation }) => {
+const CityItem = ({ location, lat, lng, navigation }) => {
   const [data, setData] = useState([])
 
   const fetchWeather = async () => {
@@ -43,7 +43,7 @@ const CityItem = ({ lat, lng, navigation }) => {
   }
   const renderTimezone = () => {
     if (data) {
-      return data.timezone
+      return location
     } else {
       return 'Loading...'
     }
@@ -61,11 +61,15 @@ const CityItem = ({ lat, lng, navigation }) => {
         <Column flex={() => '0.5'}>
           <Row>{renderIcon()}</Row>
           <Row>
-            <Temperature>{renderCurrentTemp()}°</Temperature>
+            <Temperature adjustsFontSizeToFit numberOfLines={1}>
+              {renderCurrentTemp()}°
+            </Temperature>
           </Row>
         </Column>
         <Column flex={() => '1'}>
-          <Location>{renderTimezone()}</Location>
+          <Location adjustsFontSizeToFit numberOfLines={1}>
+            {renderTimezone()}
+          </Location>
         </Column>
       </CityBox>
     </TouchableOpacity>

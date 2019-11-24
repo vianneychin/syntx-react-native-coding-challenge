@@ -29,7 +29,7 @@ export const Row = styled.View`
   align-items: center;
 `
 export const Temperature = styled.Text`
-  font-size: 35px;
+  font-size: ${props => (props.smaller ? '25px' : '35px')};
 `
 export const Location = styled.Text`
   font-size: 35px;
@@ -61,7 +61,7 @@ export const CityForecastContainer = styled.ScrollView`
 `
 export const DayContainer = styled.View`
   background-color: rgb(240, 240, 240);
-  height: 120px;
+  height: 100px;
   border-left-width: 5px;
   border-left-color: rgb(100, 100, 100);
   display: flex;
@@ -72,6 +72,8 @@ export const ForecastColumn = styled(Column)`
   display: flex;
   flex-direction: row;
   flex: 1;
+  height: 120%;
+  align-items: center;
 `
 export const ForecastRow = styled(Row)`
   height: 100%;
@@ -79,5 +81,6 @@ export const ForecastRow = styled(Row)`
   align-items: ${props => (props.alignLeft ? 'flex-start' : 'center')};
 `
 export const Day = styled.Text`
-  font-size: 35px;
+  font-size: 25px;
+  text-align: left;
 `

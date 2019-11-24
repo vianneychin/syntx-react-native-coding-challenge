@@ -19,7 +19,9 @@ export const AddCityScreen = ({ navigation }) => {
     return extraData.map((item, index) => {
       return (
         <CityButton key={item.id} onPress={() => handlePress(item, index)}>
-          <City>{item.city}</City>
+          <City adjustsFontSizeToFit numberOfLines={1}>
+            {item.location}
+          </City>
         </CityButton>
       )
     })
@@ -30,4 +32,8 @@ export const AddCityScreen = ({ navigation }) => {
       <AddCityContainer>{renderData()}</AddCityContainer>
     </>
   )
+}
+
+AddCityScreen.navigationOptions = {
+  title: 'More Cities'
 }
