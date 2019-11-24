@@ -14,6 +14,7 @@ export const AddCityScreen = ({ navigation }) => {
     const setHardData = getParams('setHardData')
     setHardData([...hardData, item])
     setExtraData(extraData => extraData.filter(value => item !== value))
+    navigation.navigate('HomeScreen')
   }
 
   const renderData = () => {

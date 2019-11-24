@@ -61,7 +61,6 @@ export const CityForecast = ({ navigation }) => {
       return (
         <DayContainer key={day.id}>
           <ForecastColumn>
-            {/* data.daily.data[0].time */}
             <Day adjustsFontSizeToFit numberOfLines={1}>
               {formatToDay(renderCurrentDay(data, day.id))}
             </Day>
@@ -69,7 +68,6 @@ export const CityForecast = ({ navigation }) => {
           <ForecastColumn>
             <ForecastRow>{renderIcon(data, day.id)}</ForecastRow>
             <ForecastRow alignLeft>
-              {/* data.daily.data[0].temperatureMax */}
               <Temperature smaller adjustsFontSizeToFit numberOfLines={1}>
                 {renderDailyTemp(data, day.id)}°
               </Temperature>
