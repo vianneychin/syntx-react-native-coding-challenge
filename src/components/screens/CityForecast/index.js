@@ -18,8 +18,6 @@ export const CityForecast = ({ navigation }) => {
   }
   const data = getParams('data')
 
-  console.log(data)
-
   const renderIcon = (data, index) => {
     if (data.daily) {
       const icon = icons[data.daily.data[index].icon]

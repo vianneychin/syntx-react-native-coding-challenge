@@ -20,6 +20,7 @@ const CityItem = ({ location, lat, lng, navigation }) => {
     )
     const response = await data.json()
     setData(response)
+    console.log(response)
   }
 
   useEffect(() => {

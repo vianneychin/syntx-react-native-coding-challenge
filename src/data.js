@@ -38,7 +38,7 @@ export const moreData = [
     id: 6,
     location: 'Seoul, Korea',
     lat: '37.5668',
-    lng: '-126.978-'
+    lng: '-126.978'
   },
   {
     id: 7,
