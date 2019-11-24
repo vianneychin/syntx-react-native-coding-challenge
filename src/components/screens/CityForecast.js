@@ -18,49 +18,41 @@ export const CityForecast = ({ navigation }) => {
 
   console.log(data)
 
+  const renderDaysOfWeek = () => {
+    const daysOfWeek = [
+      { id: 0 },
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
+      { id: 6 }
+    ]
+    return daysOfWeek.map(day => {
+      return (
+        <DayContainer>
+          <ForecastColumn>
+            {/* data.daily.data[0].time */}
+            <Day>today</Day>
+          </ForecastColumn>
+          <ForecastColumn>
+            <ForecastRow>
+              <Icon source={require('../../assets/icons/fog.png')} />
+            </ForecastRow>
+            <ForecastRow alignLeft>
+              {/* data.daily.data[0].temperatureMax */}
+              <Temperature>71</Temperature>
+            </ForecastRow>
+          </ForecastColumn>
+        </DayContainer>
+      )
+    })
+  }
+
   // const renderData = (data, defaultValue) =>
   //   JSON.stringify(navigation.getParam(data, defaultValue))
-  return (
-    <CityForecastContainer>
-      <DayContainer>
-        <ForecastColumn>
-          <Day>monday</Day>
-        </ForecastColumn>
-        <ForecastColumn>
-          <ForecastRow>
-            <Icon source={require('../../assets/icons/fog.png')} />
-          </ForecastRow>
-          <ForecastRow alignLeft>
-            <Temperature>71</Temperature>
-          </ForecastRow>
-        </ForecastColumn>
-      </DayContainer>
-      <DayContainer>
-        <ForecastColumn>
-          <Day>monday</Day>
-        </ForecastColumn>
-        <ForecastColumn>
-          <ForecastRow>
-            <Icon source={require('../../assets/icons/fog.png')} />
-          </ForecastRow>
-          <ForecastRow alignLeft>
-            <Temperature>71</Temperature>
-          </ForecastRow>
-        </ForecastColumn>
-      </DayContainer>
-      <DayContainer>
-        <ForecastColumn>
-          <Day>monday</Day>
-        </ForecastColumn>
-        <ForecastColumn>
-          <ForecastRow>
-            <Icon source={require('../../assets/icons/fog.png')} />
-          </ForecastRow>
-          <ForecastRow alignLeft>
-            <Temperature>71</Temperature>
-          </ForecastRow>
-        </ForecastColumn>
-      </DayContainer>
-    </CityForecastContainer>
-  )
+  return <CityForecastContainer>{renderDaysOfWeek()}</CityForecastContainer>
 }
+
+// Loop through the next 7 days including today,
+// render that stuff
