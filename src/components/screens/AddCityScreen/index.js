@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
 import { AddCityContainer, City, CityButton } from '../../../styles'
 import { moreData } from '../../../data'
 
@@ -13,7 +14,6 @@ export const AddCityScreen = ({ navigation }) => {
     const setHardData = getParams('setHardData')
     setHardData([...hardData, item])
     setExtraData(extraData => extraData.filter(value => item !== value))
-    /* save here? */
   }
 
   const renderData = () => {
@@ -27,6 +27,27 @@ export const AddCityScreen = ({ navigation }) => {
       )
     })
   }
+
+  useEffect(() => {
+    try {
+      AsyncStorage.getItem('my-extra-data').then(extraData => {
+        if (extraData) {
+          let data = JSON.parse(extraData)
+          setExtraData(data)
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      AsyncStorage.setItem('my-extra-data', JSON.stringify(extraData))
+    } catch (error) {
+      console.log(error)
+    }
+  }, [extraData])
 
   return (
     <>
