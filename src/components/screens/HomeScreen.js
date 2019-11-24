@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, Image } from 'react-native'
 import { data } from '../../data'
-
 export const HomeScreen = ({ navigation, resource }) => {
   // useEffect(() => {
   //   fetch(
@@ -21,7 +20,7 @@ export const HomeScreen = ({ navigation, resource }) => {
     console.log(response)
   }
   useEffect(() => {
-    // fetchWeather(data.new_york.lat, data.new_york.lng)
+    // fetchWeather(data.chicago.lat, data.chicago.lng)
   })
 
   return (
@@ -37,6 +36,10 @@ export const HomeScreen = ({ navigation, resource }) => {
             test: 'Cool weather data here'
           })
         }
+      />
+      <Image
+        style={{ height: 20, width: 20 }}
+        source={require('../../assets/icons/clear-day.png')}
       />
     </View>
   )

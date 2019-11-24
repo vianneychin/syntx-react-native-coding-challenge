@@ -12,5 +12,9 @@ export const data = {
   los_angeles: {
     lat: '37.8267',
     lng: '-122.4233'
+  },
+  alaska: {
+    lat: '61.2181',
+    lng: '-149.9003'
   }
 }
