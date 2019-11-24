@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Text } from 'react-native'
 
 export const HomeContainer = styled.ScrollView`
   /* background-color: red; */
@@ -37,4 +38,28 @@ export const Temperature = styled.Text`
 
 export const Location = styled.Text`
   font-size: 35px;
+`
+
+export const Icon = styled.Image`
+  width: 50px;
+  height: 50px;
+`
+
+export const AddCityContainer = styled.View`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 5%;
+`
+
+export const City = styled(Text).attrs(props => ({
+  adjustsFontSizeToFit: true,
+  numberOfLines: 1
+}))`
+  font-size: 30px;
+  text-align: center;
+`
+export const CityButton = styled.TouchableOpacity`
+  width: 80%;
+  margin-bottom: 20px;
 `

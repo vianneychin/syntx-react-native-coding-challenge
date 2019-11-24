@@ -2,35 +2,58 @@
 
 export const data = [
   {
+    id: 1,
+    state: 'Illinois',
     city: 'chicago',
     lat: '41.8781',
     lng: '-87.6298'
   },
   {
+    id: 2,
+    state: 'New York',
     city: 'new_york',
     lat: '40.7128',
     lng: '-74.0060'
   },
   {
+    id: 3,
+    state: 'California',
     city: 'los_angeles',
     lat: '37.8267',
     lng: '-122.4233'
   },
   {
-    city: 'alaska',
+    id: 4,
+    state: 'Alaska',
+    city: 'anchorage',
     lat: '61.2181',
     lng: '-149.9003'
   }
 ]
 
-export const icons = {
-  'clear-day': require('./assets/icons/clear-day.png'),
-  'clear-night': require('./assets/icons/clear-night.png'),
-  cloudy: require('./assets/icons/cloudy.png'),
-  fog: require('./assets/icons/fog.png'),
-  'partly-cloudy-day': require('./assets/icons/partly-cloudy-day.png'),
-  'partly-cloudy-night': require('./assets/icons/partly-cloudy-night.png'),
-  rain: "require('./assets/icons/rain.png')",
-  snow: require('./assets/icons/snow.png'),
-  wind: require('./assets/icons/wind.png')
-}
+export const moreData = [
+  {
+    id: 5,
+    city: 'Moscow, Russia',
+    lat: '55.7558',
+    lng: '-37.6173'
+  },
+  {
+    id: 6,
+    city: 'Seoul, Korea',
+    lat: '37.5668',
+    lng: '-126.978-'
+  },
+  {
+    id: 7,
+    city: 'Beijing, China',
+    lat: '39.9042',
+    lng: '116.4074'
+  },
+  {
+    id: 8,
+    city: 'Zürich, Switzerland',
+    lat: '47.3769',
+    lng: '-8.5417'
+  }
+]

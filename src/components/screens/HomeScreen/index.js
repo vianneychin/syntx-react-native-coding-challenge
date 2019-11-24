@@ -1,32 +1,25 @@
-import React, { useEffect } from 'react'
-import { View, Text, Button, Image, SafeAreaView } from 'react-native'
+import React, { useState } from 'react'
 import { data } from '../../../data'
-import { CityItem } from './CityItem'
+import { Button, SafeAreaView } from 'react-native'
 import { HomeContainer } from '../../../styles'
+import { CityList } from './CityList'
 
-export const HomeScreen = ({ navigation, resource }) => {
-  const fetchWeather = async (lat, lng) => {
-    const data = await fetch(
-      `https://api.darksky.net/forecast/231063ebc5ecb280ea352c370e75450b/${lat}, ${lng}`
-    )
-    const response = await data.json()
-    console.log(response)
-  }
-  useEffect(() => {
-    // fetchWeather(data.chicago.lat, data.chicago.lng)
-  })
+export const HomeScreen = ({ navigation }) => {
+  const [hardData, setHardData] = useState(data)
 
-  console.log(data)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <HomeContainer>
-        {data.map(item => {
-          return <CityItem lat={item.lat} lng={item.lng} city={item.city} />
-        })}
+        <CityList data={hardData} />
       </HomeContainer>
       <Button
         title='Add a city'
-        onPress={() => navigation.navigate('AddCityScreen')}
+        onPress={() =>
+          navigation.navigate('AddCityScreen', {
+            hardData,
+            setHardData
+          })
+        }
       />
     </SafeAreaView>
   )
