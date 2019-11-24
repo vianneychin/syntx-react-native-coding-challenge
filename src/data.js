@@ -18,3 +18,4 @@ export const data = {
     lng: '-149.9003'
   }
 }
+
