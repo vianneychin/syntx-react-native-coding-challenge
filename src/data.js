@@ -1,5 +1,3 @@
-// new york location 40.7128° N, 74.0060° W
-
 export const data = [
   {
     id: 1,
