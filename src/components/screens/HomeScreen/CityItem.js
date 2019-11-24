@@ -34,25 +34,38 @@ const CityItem = ({ lat, lng, navigation }) => {
       return <Text>Loading...</Text>
     }
   }
-
-  const { navigate } = navigation
+  const renderCurrentTemp = () => {
+    if (data.currently) {
+      return data.currently.apparentTemperature
+    } else {
+      return 'Loading...'
+    }
+  }
+  const renderTimezone = () => {
+    if (data) {
+      return data.timezone
+    } else {
+      return 'Loading...'
+    }
+  }
 
   return (
-    <TouchableOpacity onPress={() => navigate('CityForecast')}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('CityForecast', {
+          data
+        })
+      }
+    >
       <CityBox>
         <Column flex={() => '0.5'}>
           <Row>{renderIcon()}</Row>
           <Row>
-            <Temperature>
-              {data.currently
-                ? data.currently.apparentTemperature
-                : 'Loading...'}
-              °
-            </Temperature>
+            <Temperature>{renderCurrentTemp()}°</Temperature>
           </Row>
         </Column>
         <Column flex={() => '1'}>
-          <Location>{data ? data.timezone : 'Loading...'}</Location>
+          <Location>{renderTimezone()}</Location>
         </Column>
       </CityBox>
     </TouchableOpacity>

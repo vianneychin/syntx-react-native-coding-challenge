@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { Text } from 'react-native'
 
 export const HomeContainer = styled.ScrollView`
-  /* background-color: red; */
   flex: 1;
   display: flex;
   margin: 2.5%;
@@ -17,41 +16,34 @@ export const CityBox = styled.View`
 `
 export const Column = styled.View`
   flex: ${props => props.flex};
-  /* background-color: ${props => props.bg}; */
+  display: ${props => props.d};
   margin: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
 `
-
 export const Row = styled.View`
-  /* background-color: ${props => props.bg}; */
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 `
-
 export const Temperature = styled.Text`
   font-size: 35px;
 `
-
 export const Location = styled.Text`
   font-size: 35px;
 `
-
 export const Icon = styled.Image`
   width: 50px;
   height: 50px;
 `
-
 export const AddCityContainer = styled.View`
   flex: 1;
   display: flex;
   align-items: center;
   padding: 5%;
 `
-
 export const City = styled(Text).attrs(props => ({
   adjustsFontSizeToFit: true,
   numberOfLines: 1
@@ -62,4 +54,30 @@ export const City = styled(Text).attrs(props => ({
 export const CityButton = styled.TouchableOpacity`
   width: 80%;
   margin-bottom: 20px;
+`
+export const CityForecastContainer = styled.ScrollView`
+  flex: 1;
+  padding: 5%;
+`
+export const DayContainer = styled.View`
+  background-color: rgb(240, 240, 240);
+  height: 120px;
+  border-left-width: 5px;
+  border-left-color: rgb(100, 100, 100);
+  display: flex;
+  flex-direction: row;
+  margin: 2.5% 0;
+`
+export const ForecastColumn = styled(Column)`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+`
+export const ForecastRow = styled(Row)`
+  height: 100%;
+  display: flex;
+  align-items: ${props => (props.alignLeft ? 'flex-start' : 'center')};
+`
+export const Day = styled.Text`
+  font-size: 35px;
 `
