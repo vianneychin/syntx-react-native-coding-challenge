@@ -7,7 +7,7 @@
 </ol>
 
 <h1>App Architecture:</h1>
-<p>The mini-weather has three main screens:</p>
+<p>The mini-weather-app has three main screens:</p>
 <ul>
   <li>HomeScreen</li>
     <ul>
