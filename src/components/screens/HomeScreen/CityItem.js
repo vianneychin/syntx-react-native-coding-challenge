@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Text } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
+import { withNavigation } from 'react-navigation'
 import {
   CityBox,
   Column,
@@ -10,7 +11,7 @@ import {
 } from '../../../styles'
 import { icons } from './icons'
 
-export const CityItem = ({ lat, lng }) => {
+const CityItem = ({ lat, lng, navigation }) => {
   const [data, setData] = useState([])
 
   const fetchWeather = async () => {
@@ -22,7 +23,7 @@ export const CityItem = ({ lat, lng }) => {
   }
 
   useEffect(() => {
-    fetchWeather()
+    // fetchWeather()
   }, [])
 
   const renderIcon = () => {
@@ -34,20 +35,28 @@ export const CityItem = ({ lat, lng }) => {
     }
   }
 
+  const { navigate } = navigation
+
   return (
-    <CityBox>
-      <Column flex={() => '0.5'}>
-        <Row>{renderIcon()}</Row>
-        <Row>
-          <Temperature>
-            {data.currently ? data.currently.apparentTemperature : 'Loading...'}
-            °
-          </Temperature>
-        </Row>
-      </Column>
-      <Column flex={() => '1'}>
-        <Location>{data ? data.timezone : 'Loading...'}</Location>
-      </Column>
-    </CityBox>
+    <TouchableOpacity onPress={() => navigate('CityForecast')}>
+      <CityBox>
+        <Column flex={() => '0.5'}>
+          <Row>{renderIcon()}</Row>
+          <Row>
+            <Temperature>
+              {data.currently
+                ? data.currently.apparentTemperature
+                : 'Loading...'}
+              °
+            </Temperature>
+          </Row>
+        </Column>
+        <Column flex={() => '1'}>
+          <Location>{data ? data.timezone : 'Loading...'}</Location>
+        </Column>
+      </CityBox>
+    </TouchableOpacity>
   )
 }
+
+export default withNavigation(CityItem)

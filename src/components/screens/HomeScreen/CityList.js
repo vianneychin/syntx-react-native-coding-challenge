@@ -1,5 +1,5 @@
 import React from 'react'
-import { CityItem } from './CityItem'
+import CityItem from './CityItem'
 
 export const CityList = ({ data }) => {
   return data.map(item => {
