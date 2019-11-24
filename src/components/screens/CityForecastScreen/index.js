@@ -12,7 +12,7 @@ import {
   Icon
 } from '../../../styles'
 
-export const CityForecast = ({ navigation }) => {
+export const CityForecastScreen = ({ navigation }) => {
   const getParams = param => {
     return navigation.getParam(param, 'data')
   }
@@ -85,6 +85,6 @@ export const CityForecast = ({ navigation }) => {
   )
 }
 
-CityForecast.navigationOptions = {
+CityForecastScreen.navigationOptions = {
   title: '7 Day Forecast'
 }

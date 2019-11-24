@@ -52,7 +52,7 @@ const CityItem = ({ location, lat, lng, navigation }) => {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('CityForecast', {
+        navigation.navigate('CityForecastScreen', {
           data
         })
       }
