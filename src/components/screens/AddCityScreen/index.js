@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { AddCityContainer, City, CityButton } from '../../../styles'
-import { data, moreData } from '../../../data'
+import { moreData } from '../../../data'
 
 export const AddCityScreen = ({ navigation }) => {
   const [extraData, setExtraData] = useState(moreData)
@@ -13,6 +13,7 @@ export const AddCityScreen = ({ navigation }) => {
     const setHardData = getParams('setHardData')
     setHardData([...hardData, item])
     setExtraData(extraData => extraData.filter(value => item !== value))
+    /* save here? */
   }
 
   const renderData = () => {
