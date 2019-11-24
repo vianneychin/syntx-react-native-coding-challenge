@@ -18,6 +18,22 @@ export const CityForecast = ({ navigation }) => {
 
   console.log(data)
 
+  const renderCurrentDay = (data, index) => {
+    if (data.daily) {
+      return data.daily.data[index].time
+    } else {
+      return 'Loading...'
+    }
+  }
+
+  const renderDailyTemp = (data, index) => {
+    if (data.daily) {
+      return data.daily.data[index].temperatureMax
+    } else {
+      return 'Loading...'
+    }
+  }
+
   const renderDaysOfWeek = () => {
     const daysOfWeek = [
       { id: 0 },
@@ -30,10 +46,10 @@ export const CityForecast = ({ navigation }) => {
     ]
     return daysOfWeek.map(day => {
       return (
-        <DayContainer>
+        <DayContainer key={day.id}>
           <ForecastColumn>
             {/* data.daily.data[0].time */}
-            <Day>today</Day>
+            <Day>{renderCurrentDay(data, day.id)}</Day>
           </ForecastColumn>
           <ForecastColumn>
             <ForecastRow>
@@ -41,7 +57,7 @@ export const CityForecast = ({ navigation }) => {
             </ForecastRow>
             <ForecastRow alignLeft>
               {/* data.daily.data[0].temperatureMax */}
-              <Temperature>71</Temperature>
+              <Temperature>{renderDailyTemp(data, day.id)}</Temperature>
             </ForecastRow>
           </ForecastColumn>
         </DayContainer>

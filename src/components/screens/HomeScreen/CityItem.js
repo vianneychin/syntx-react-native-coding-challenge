@@ -23,7 +23,7 @@ const CityItem = ({ lat, lng, navigation }) => {
   }
 
   useEffect(() => {
-    // fetchWeather()
+    fetchWeather()
   }, [])
 
   const renderIcon = () => {
