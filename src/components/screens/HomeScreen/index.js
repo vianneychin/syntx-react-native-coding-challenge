@@ -15,10 +15,14 @@ export const HomeScreen = ({ navigation, resource }) => {
   useEffect(() => {
     // fetchWeather(data.chicago.lat, data.chicago.lng)
   })
+
+  console.log(data)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <HomeContainer>
-        <CityItem />
+        {data.map(item => {
+          return <CityItem lat={item.lat} lng={item.lng} city={item.city} />
+        })}
       </HomeContainer>
       <Button
         title='Add a city'
